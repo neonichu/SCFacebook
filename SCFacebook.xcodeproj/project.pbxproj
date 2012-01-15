@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4DF43AC7147EBFB500A7D104 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF43AC6147EBFB500A7D104 /* QuartzCore.framework */; };
+		8A5CFC7214C3816200511973 /* OAuthKeylogger.js in Resources */ = {isa = PBXBuildFile; fileRef = 8A5CFC7014C3816200511973 /* OAuthKeylogger.js */; };
+		8A5CFC7314C3816200511973 /* OAuthKeylogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFC7114C3816200511973 /* OAuthKeylogger.m */; };
 		F9564FC214805556000A9AA0 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9564FC014805556000A9AA0 /* background.jpg */; };
 		F9564FC314805556000A9AA0 /* nophoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9564FC114805556000A9AA0 /* nophoto.jpg */; };
 		F9564FDE1480559A000A9AA0 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = F9564FC41480559A000A9AA0 /* Facebook.m */; };
@@ -46,6 +48,9 @@
 
 /* Begin PBXFileReference section */
 		4DF43AC6147EBFB500A7D104 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8A5CFC6F14C3816200511973 /* OAuthKeylogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthKeylogger.h; path = OAuthKeylogger/OAuthKeylogger.h; sourceTree = "<group>"; };
+		8A5CFC7014C3816200511973 /* OAuthKeylogger.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = OAuthKeylogger.js; path = OAuthKeylogger/OAuthKeylogger.js; sourceTree = "<group>"; };
+		8A5CFC7114C3816200511973 /* OAuthKeylogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAuthKeylogger.m; path = OAuthKeylogger/OAuthKeylogger.m; sourceTree = "<group>"; };
 		F9564FC014805556000A9AA0 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = images/background.jpg; sourceTree = "<group>"; };
 		F9564FC114805556000A9AA0 /* nophoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = nophoto.jpg; path = images/nophoto.jpg; sourceTree = "<group>"; };
 		F9564FC41480559A000A9AA0 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = Facebook/Facebook.m; sourceTree = "<group>"; };
@@ -121,6 +126,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A5CFC6E14C3814000511973 /* OAuthKeylogger */ = {
+			isa = PBXGroup;
+			children = (
+				8A5CFC6F14C3816200511973 /* OAuthKeylogger.h */,
+				8A5CFC7014C3816200511973 /* OAuthKeylogger.js */,
+				8A5CFC7114C3816200511973 /* OAuthKeylogger.m */,
+			);
+			name = OAuthKeylogger;
+			sourceTree = "<group>";
+		};
 		F9564FBF148053CA000A9AA0 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +189,7 @@
 			children = (
 				F9A4E33614812E1500596AC5 /* icon.png */,
 				F9A4E33414812E1000596AC5 /* icon@2x.png */,
+				8A5CFC6E14C3814000511973 /* OAuthKeylogger */,
 				F95F26E3147DCE8600715CC8 /* SCFacebook */,
 				F95F26DC147DCE8500715CC8 /* Frameworks */,
 				F95F26DA147DCE8500715CC8 /* Products */,
@@ -191,10 +207,10 @@
 		F95F26DC147DCE8500715CC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F95F26E1147DCE8600715CC8 /* CoreGraphics.framework */,
+				F95F26DF147DCE8600715CC8 /* Foundation.framework */,
 				4DF43AC6147EBFB500A7D104 /* QuartzCore.framework */,
 				F95F26DD147DCE8500715CC8 /* UIKit.framework */,
-				F95F26DF147DCE8600715CC8 /* Foundation.framework */,
-				F95F26E1147DCE8600715CC8 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -342,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5CFC7214C3816200511973 /* OAuthKeylogger.js in Resources */,
 				F95F26E8147DCE8600715CC8 /* InfoPlist.strings in Resources */,
 				F95F26F4147DCE8600715CC8 /* ViewController.xib in Resources */,
 				F9564FC214805556000A9AA0 /* background.jpg in Resources */,
@@ -383,6 +400,7 @@
 				F9694EB3148070FE000B8A59 /* EGOImageLoader.m in Sources */,
 				F9694EB4148070FE000B8A59 /* EGOImageView.m in Sources */,
 				F9694EB8148073CC000B8A59 /* FriendCell.m in Sources */,
+				8A5CFC7314C3816200511973 /* OAuthKeylogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +445,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -444,7 +462,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

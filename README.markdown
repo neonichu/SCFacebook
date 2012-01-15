@@ -1,103 +1,23 @@
-The SCFacebook is a simpler and cleaner to use the api [Facebook-ios-sdk] (https://github.com/facebook/facebook-ios-sdk) with Blocks.
+# OAuth keylogger demonstration #
 
-[![]( http://www.lucascorrea.com/scfacebook.png)] ![](http://www.lucascorrea.com/scfacebook_friends.png)
+Adding UIWebViews for OAuth logins in mobile apps adds zero security. This
+thing demonstrates it by stealing your Facebook credentials. The problem
+ought to be widely known, but apparently we need a simple demonstration
+to end it. Do not use this to actually steal other people's credentials,
+mmmmkay?
 
-Installation
-=================
-Before you begin development with the Facebook iOS SDK, you will need to install the dev tools iOS, Git (the source control client we use for this SDK) and then clone the lastest version of the SDK from [Facebook-ios-sdk] ( https://github.com/facebook/facebook-ios-sdk).
+I used [SCFacebook] (https://github.com/lucascorrea/SCFacebook) as base
+just because it ships with a simple FB example app. You can do the same
+with other similar approaches like the Twitter or Flattr APIs.
 
-
-Getting Started
-=================
-
-Now we need to copy the `SCFacebook.h` `SCFacebook.m` for your project.
-
-In the class `SCFacebook.h` need to add your `kAppId` Facebook as example:
- 
-	#import "Facebook.h"
-	#define kAppId @"YOUR_APP_ID"
-	
-	@interface SCFacebook : NSObject <FBSessionDelegate, FBRequestDelegate, FBDialogDelegate>{
-
-Once you have set up the `URL Scheme` as image below:
-
-[![]( Https://developers.facebook.com/attachment/ios_config.png)]
-
-Now in it's `AppDelegate` need to add two methods
-
-	#import "SCFacebook.h"
-	@implementation AppDelegate
-
-	//SCFacebook Implementation
-	- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    	[[NSNotificationCenter defaultCenter] postNotificationName:OPEN_URL object:url];
-    	return YES;
-	}
-
-	- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    	[[NSNotificationCenter defaultCenter] postNotificationName:OPEN_URL object:url];
-    	return YES;
-	}
-	
-Methods
-===========
-
-There is 10 methods:
-
-	+(void)loginCallBack:(SCFacebookCallback)callBack;
-	
-	+(void)logoutCallBack:(SCFacebookCallback)callBack;
-	
-	+(void)getUserFQL:(NSString*)fql callBack:(SCFacebookCallback)callBack;
-	
-	+(void)getUserFriendsCallBack:(SCFacebookCallback)callBack;
-	
-	+(void)feedPostWithLinkPath:(NSString*)_url caption:(NSString*)_caption callBack:(SCFacebookCallback)callBack;
-	
-	+(void)feedPostWithMessage:(NSString*)_message callBack:(SCFacebookCallback)callBack;
-	
-	+(void)feedPostWithMessageDialogCallBack:(SCFacebookCallback)callBack;
-	
-	+(void)feedPostWithPhoto:(UIImage*)_photo caption:(NSString*)_caption callBack:(SCFacebookCallback)callBack;
-	
-	+(void)myFeedCallBack:(SCFacebookCallback)callBack;
-	
-	+(void)inviteFriendsWithMessage:(NSString *)_message callBack:(SCFacebookCallback)callBack;
+Minor technical note: by default FB Connect opens the login dialog in
+Mobile Safari. As the comments in the source say, this is *not* a
+security measure, but a matter of using the cookies from it. With a
+slight modification, the in-app login is used by default and that's what
+this example does.
 
 
-Example Usage
-=============
-
-To use the component is very easy. Import the header for your class.
-
-	#import "SCFacebook.h"
-	@implementation ViewController
-
-	#pragma mark - Button Action
-	- (IBAction)login:(id)sender {
-	    
-		[SCFacebook loginCallBack:^(BOOL success, id result) {
-	        	if (success) {
-	        	}
-	    	}];
-	}
-
-	- (IBAction)publishYourWallLink:(id)sender {
-		[SCFacebook feedPostWithLinkPath:@"http://www.lucascorrea.com" caption:@"Portfolio" callBack:^(BOOL success, id result) {
-           		if (success) {
-	        	}
-		}];
-	}
-
-	- (IBAction)publishYourWallMessage:(id)sender {
-		[SCFacebook feedPostWithMessage:@"This is message" callBack:^(BOOL success, id result) {
-	   		if (success) {
-	        	}
-		}];
-	}
-
-License
-=============
+### Original license of SCFacebook ###
 
 SCFacebook is licensed under the MIT License:
 
